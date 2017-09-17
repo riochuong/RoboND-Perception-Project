@@ -138,7 +138,7 @@ def pcl_callback(pcl_msg):
 
     # TODO: Publish ROS messages
     pcl_objects_pub.publish(ros_cloud_objects)
-    # pcl_table_pub.publish(ros_cloud_table)
+    pcl_table_pub.publish(ros_cloud_table)
     pcl_cluster_pub.publish(ros_cluster)
 
 
@@ -270,7 +270,7 @@ def pr2_mover(object_list):
 
     # TODO: Output your request parameters into output yaml file
     print ("Percentage: "+str( len(dict_list) / float(len(object_list_param)) * 100.0 )+"%")
-    send_to_yaml("test3_world.yaml", dict_list)
+    send_to_yaml("test2_world.yaml", dict_list)
 
 
 
@@ -287,6 +287,7 @@ if __name__ == '__main__':
     pcl_objects_pub = rospy.Publisher("/pcl_objects", PointCloud2, queue_size=1)
     object_markers_pub = rospy.Publisher("/object_markers", Marker, queue_size=1)
     detected_objects_pub = rospy.Publisher("/detected_objects", DetectedObjectsArray, queue_size=1)
+    pcl_table_pub = rospy.Publisher("/pcl_table", PointCloud2, queue_size=1)
     pcl_cluster_pub = rospy.Publisher("/pcl_cluster", PointCloud2, queue_size=1)
 
     # TODO: Load Model From disk
