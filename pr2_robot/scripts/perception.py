@@ -218,6 +218,8 @@ def pr2_mover(object_list):
     for i in range(0,len(object_list_param)):
         # TODO: Get the PointCloud for a given object and obtain it's centroid
         label = object_list_param[i]['name']
+        if (not label in centroids):
+            continue
         centroid = centroids[label]
         group = object_list_param[i]['group']
         object_name = String()
@@ -267,7 +269,9 @@ def pr2_mover(object_list):
         #     print "Service call failed: %s"%e
 
     # TODO: Output your request parameters into output yaml file
+    print ("Percentage: "+str( len(dict_list) / float(len(object_list_param)) * 100.0 )+"%")
     send_to_yaml("test3_world.yaml", dict_list)
+
 
 
 
